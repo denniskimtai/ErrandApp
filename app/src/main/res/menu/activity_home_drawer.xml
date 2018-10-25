@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/iconhome"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_shopping"
+            android:icon="@drawable/shoppingicon"
+            android:title="Shopping" />
+        <item
+            android:id="@+id/nav_delivery"
+            android:icon="@drawable/icondelivery"
+            android:title="Delivery" />
+        <item
+            android:id="@+id/nav_pickup"
+            android:icon="@drawable/iconpickup"
+            android:title="Pick Up" />
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_contact"
+                android:icon="@drawable/iconemail"
+                android:title="Email us" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/iconlogout"
+                android:title="Logout" />
+        </menu>
+    </item>
+
+</menu>
