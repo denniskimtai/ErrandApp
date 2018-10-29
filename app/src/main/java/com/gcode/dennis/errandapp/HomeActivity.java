@@ -2,6 +2,7 @@ package com.gcode.dennis.errandapp;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,7 +19,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -28,6 +36,12 @@ import me.relex.circleindicator.CircleIndicator;
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+            TextView profileEmail, navprofileName;
+            ImageView navImageView;
+            FirebaseAuth firebaseAuth;
+            private NavigationView navigationView;
+
+
 
 
     @Override
@@ -36,6 +50,27 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        navigationView = findViewById(R.id.nav_view);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        if ( firebaseAuth.getCurrentUser() != null) {
+            //Display user email in nav header
+            profileEmail = navigationView.getHeaderView(0).findViewById(R.id.profileEmail);
+            final FirebaseUser user = firebaseAuth.getCurrentUser();
+            profileEmail.setText(user.getEmail());
+
+            //Display user profile name in nav header
+            navprofileName = navigationView.getHeaderView(0).findViewById(R.id.profileName);
+            navprofileName.setText(user.getDisplayName());
+
+
+
+        } else {
+            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
 
 
 
@@ -109,32 +144,40 @@ public class HomeActivity extends AppCompatActivity
 
         //Initialize selected fragment object using switch statement passing the item id
         switch (itemId) {
-            case R.id.nav_shopping:
-                fragment = new Shopping();
-                break;
+                case R.id.nav_shopping:
+                    fragment = new Shopping();
+                    break;
 
-            case R.id.nav_delivery:
-                fragment = new Delivery();
-                break;
+                case R.id.nav_delivery:
+                    fragment = new Delivery();
+                    break;
 
-            case R.id.nav_pickup:
-                fragment = new Pickup();
-                break;
+                case R.id.nav_pickup:
+                    fragment = new Pickup();
+                    break;
 
-            case R.id.nav_home:
-                fragment = new Home();
-                break;
+                case R.id.nav_home:
+                    fragment = new Home();
+                    break;
 
-            case R.id.nav_contact:
-                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-                emailIntent.setData(Uri.parse("mailto:masterkk254@gmail.com"));
+                case R.id.nav_contact:
+                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                    emailIntent.setData(Uri.parse("mailto:masterkk254@gmail.com"));
+                    try {
+                        startActivity(emailIntent);
+                    } catch (ActivityNotFoundException e) {
+                        //When there is no email app installed
+                        Toast.makeText(this, "No email app installed! Please install an email app and try again", Toast.LENGTH_SHORT).show();
+                    }
 
-                try {
-                    startActivity(emailIntent);
-                } catch (ActivityNotFoundException e) {
-                    //When there is no email app installed
-                    Toast.makeText(this, "No email app installed! Please install an email app and try again", Toast.LENGTH_SHORT).show();
-                }
+                case R.id.nav_logout:
+                    firebaseAuth.signOut();
+                    Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                    startActivity(intent);
+
+                    finish();
+                    break;
+
 
 
         }

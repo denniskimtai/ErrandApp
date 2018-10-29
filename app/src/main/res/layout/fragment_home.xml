@@ -1,93 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:background="@color/colorPrimaryLight"
-    android:layout_height="wrap_content"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".HomeActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:showIn="@layout/app_bar_home"
-    android:weightSum="3">
-
-    <FrameLayout
-        android:id="@+id/content_frame"
-        android:layout_weight="1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <android.support.v4.view.ViewPager
-            android:id="@+id/pager"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true" />
-        <me.relex.circleindicator.CircleIndicator
-            android:id="@+id/indicator"
+    android:weightSum="3"
+    tools:context=".HomeActivity">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        
+        <TextView
+            android:id="@+id/textHeading"
+            android:text="@string/app_name"
+            android:textSize="34sp"
+            android:textColor="@color/primaryText"
+            android:layout_centerInParent="true"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_alignParentBottom="true"/>
-    </FrameLayout>
+            android:layout_height="wrap_content" />
+        
+    </RelativeLayout>
 
-    <LinearLayout
+    <GridLayout
+        android:id="@+id/mainGrid"
+        android:rowCount="2"
+        android:columnCount="2"
+        android:alignmentMode="alignMargins"
+        android:columnOrderPreserved="false"
+        android:layout_weight="2"
+        android:padding="14dp"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:weightSum="2"
-        android:orientation="horizontal">
+        android:layout_height="0dp">
 
-        <ImageView
-            android:id="@+id/imgShopping"
-            android:layout_weight="1"
-            android:layout_width="fill_parent"
+        <!-- Row 1 column 1 -->
+
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:scaleType="fitStart"
-            android:src="@drawable/shopping" />
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="16dp"
+            android:layout_rowWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="8dp">
 
-        <ImageView
-            android:id="@+id/imgDelivery"
-            android:layout_weight="1"
-            android:layout_width="fill_parent"
+            <LinearLayout
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/homeshopping"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:textAlignment="center"
+                    android:text="Shopping"
+                    android:textColor="@color/primaryText"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <!-- column 2 row 1 -->
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:scaleType="fitStart"
-            android:src="@drawable/delivery" />
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="8dp">
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:weightSum="2"
-        android:orientation="horizontal">
+                <ImageView
+                    android:src="@drawable/homedelivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-        <ImageView
-            android:id="@+id/imgPickUp"
-            android:layout_weight="1"
-            android:layout_width="fill_parent"
+                <TextView
+                    android:textAlignment="center"
+                    android:text="Delivery"
+                    android:textColor="@color/primaryText"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <!-- row 2 column 1 -->
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:scaleType="fitStart"
-            android:src="@drawable/pickup" />
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="8dp">
 
-        <ImageView
-            android:id="@+id/imgContact"
-            android:layout_weight="1"
-            android:layout_width="fill_parent"
+            <LinearLayout
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/homepickup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:textAlignment="center"
+                    android:text="Pick Up"
+                    android:textColor="@color/primaryText"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <!-- row 2 column 2-->
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:scaleType="fitStart"
-            android:src="@drawable/delivery" />
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="8dp">
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
+                <ImageView
+                    android:src="@drawable/homedelivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
+                <TextView
+                    android:textAlignment="center"
+                    android:text="Delivery"
+                    android:textColor="@color/primaryText"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </GridLayout>
+    
 
 </LinearLayout>
+
+
+
+
+
+

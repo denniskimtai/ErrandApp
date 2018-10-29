@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1088683524736",
+    "firebase_url": "https://errandapp-8e0b7.firebaseio.com",
+    "project_id": "errandapp-8e0b7",
+    "storage_bucket": "errandapp-8e0b7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088683524736:android:71adecb0031e4351",
+        "android_client_info": {
+          "package_name": "com.gcode.dennis.errandapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088683524736-3l9u1hlsvhpe2rp7fs8s0lumsl9l3atn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gcode.dennis.errandapp",
+            "certificate_hash": "98393754f42feb33218eb22912f9b26fba3a4888"
+          }
+        },
+        {
+          "client_id": "1088683524736-4j1jnb2ek6r21igft4cf50n4qub64n4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgCumORe04aZXS7lIwIDDFoBVPZ6L-Jp8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088683524736-4j1jnb2ek6r21igft4cf50n4qub64n4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
