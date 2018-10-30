@@ -1,6 +1,7 @@
 package com.gcode.dennis.errandapp;
 
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -169,13 +171,12 @@ public class HomeActivity extends AppCompatActivity
                         //When there is no email app installed
                         Toast.makeText(this, "No email app installed! Please install an email app and try again", Toast.LENGTH_SHORT).show();
                     }
+                    break;
 
                 case R.id.nav_logout:
-                    firebaseAuth.signOut();
-                    Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-                    startActivity(intent);
+                    //Alert dialog to confirm if user wants to logout
+                    dialog();
 
-                    finish();
                     break;
 
 
@@ -191,6 +192,55 @@ public class HomeActivity extends AppCompatActivity
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
+    }
+
+    private void dialog() {
+
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("You are about to log out! Are you sure?");
+        alertDialogBuilder.setPositiveButton("yes",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        // On click log out
+                        firebaseAuth.signOut();
+                        Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                        startActivity(intent);
+
+                        finish();
+
+                    }
+                });
+
+        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 
